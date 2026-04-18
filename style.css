@@ -1,0 +1,147 @@
+@font-face {
+    font-family: "Freestyle Script";
+    src: url("Fonts/FREESCPT.TTF") format(truetype);
+
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    /* --title-screen: url("Images/title-screen.gif"); */
+    --title-page-background: url("New Images/fairy-background.gif");
+    /* --fairy: url("New Images/fairy.gif"); */
+    --yes-button: url("New Images/yes-button.png");
+
+    /* ---- Button variables ---- */
+    --button-border-radius: 200px;
+    --button-border-size: 2px;
+    --button-width: 1250px;
+
+    /* ---- Question Variables ---- */
+    --question-width: var(--button-width);
+
+    /* ---- Font sizes ---- */
+    --button-font-size: 70px;
+    --question-font-size: calc(var(--button-font-size) + 100%);
+    --question-number-font-size: calc(var(--button-font-size) - 5%);
+}
+
+body {
+    margin: 0;
+    min-height: 100dvh;
+    background-image: var(--title-page-background);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    position: relative;
+
+    /* display: flex;
+    align-items: center; /* vertical alignment */
+    /* justify-content: center; horizontal alignment */
+    text-align: center;
+
+    font-family: "Freestyle Script", sans-serif;
+}
+
+h1 {
+    font-size: var(--question-number-font-size);
+}
+
+#start-screen {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+#yes-button {
+    /* align-items: center;
+    justify-content: center; */
+    position: absolute;
+    top: 60vh;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: clamp(150px, 25vw, 400px);
+    height: auto;
+}
+
+/* #question-number {
+    margin: 0 auto 0;
+} */
+
+#question {
+    width: var(--question-width);
+    /* margin: 0 auto 20px auto; */
+    margin: 0 auto 0;
+    font-size: var(--question-font-size);
+}
+
+#result {
+    font-size: 50px;
+}
+
+#final-fairy {
+    border: 2px solid black;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    gap: 0;
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.buttons button {
+    width: var(--button-width);
+    height: auto;
+    padding: 10px 35px 10px 35px;
+    text-align: center;
+    border: var(--button-border-size) solid red;
+    border-radius: var(--button-border-radius);
+    background-color: transparent;
+
+    font-size: var(--button-font-size);
+    font-family: "Freestyle Script", sans-serif;
+}
+
+.bottom-result-page-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+#button-container {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+#button-container button {
+    font-family: "Freestyle Script", sans-serif;
+}
+
+#fairy-description {
+    width: var(--button-width);
+    font-family: "NSimSun", "SimSun", "Songti SC", serif; 
+    font-size: 30px;
+}
+
+#final-fairy-image {
+    width: 600px;
+    height: auto;
+    border: 2px solid black;
+}
