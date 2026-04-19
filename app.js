@@ -139,8 +139,7 @@ yesButton.addEventListener("click", () => {
 })
 
 function startQuiz() {
-    document.body.style.backgroundImage = `url("${questionBackgroundImage}")`
-    document.body.style.backgroundSize = "cover"
+    document.body.classList.add("question-mode");
 
     const buttons = document.getElementById("buttons")
     const questionNumber = document.getElementById("question-number")
@@ -385,6 +384,8 @@ function backToHome() {
         document.getElementById("start-screen").style.display = "none"
         startQuiz()
     })
+
+    document.body.classList.remove("question-mode");
 }
 
 function toOtherFairies() {

@@ -24,22 +24,35 @@
     --question-font-size: clamp(18px, 4vw, 36px);
     --question-number-font-size: clamp(20px, 4.5vw, 40px);
     --fairy-image-width: clamp(200px, 60%, 600px);
+
+    --footer-font-color: #51751B;
 }
 
 body {
     margin: 0;
     min-height: 100dvh;
-    background-image: var(--title-page-background);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    /* overflow: hidden; */
-
     position: relative;
 
     text-align: center;
+
     font-family: "Freestyle Script", sans-serif;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background-image: var(--title-page-background);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    z-index: -1;
+}
+
+body.question-mode::before {
+    background-image: url("New Images/question-page-background.jpg");
 }
 
 h1 {
@@ -56,6 +69,7 @@ footer {
 
     text-align: center;
     padding: 1vh 0;
+    color: var(--footer-font-color);
     font-size: clamp(20px, 3vw, 30px);
     font-family: "Freestyle Script", serif;
 }
@@ -151,7 +165,7 @@ footer {
     justify-content: flex-start;  
     align-items: center;
     gap: 2vh;                     
-    height: 100%;                  
+    flex: 1;
     padding: 5vh 2vw 2vh 2vw;      
     text-align: center;     
     margin-bottom: 0.25vh;
@@ -174,11 +188,11 @@ footer {
     background-color: transparent;
     border-radius: var(--button-border-radius);
 
-    width: 45%;              /* was 100% in answer buttons */
-    max-width: 200px;        /* keeps them from getting too big */
-    padding: 0.5em 1em;      /* reduced padding */
+    width: 45%;              
+    max-width: 200px;        
+    padding: 0.5em 1em;
 
-    font-size: calc(var(--button-font-size) * 0.7); /* ~30% smaller */
+    font-size: calc(var(--button-font-size) * 0.7);
     line-height: 1.3;
 
     font-family: "NSimSun", "SimSun", "Songti SC", serif; 
