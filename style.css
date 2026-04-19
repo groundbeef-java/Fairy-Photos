@@ -206,7 +206,7 @@ footer {
     justify-content: center;       
     align-items: center;       
     text-align: center;  
-    gap: clamp(16px, 2vw, 20px);
+    gap: clamp(10px, 2vw, 16px);
     margin-bottom: 0.25vh;
 }
 
