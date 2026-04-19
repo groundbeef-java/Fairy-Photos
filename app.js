@@ -15,6 +15,40 @@ const elements = Object.freeze({
     FOREST: "Forest"
 })
 
+const fairyPolaroids = new Map([
+    [elements.WATER, "New Images/water-fairy.jpg"],
+    [elements.STAR, "New Images/star-fairy.jpg"],
+    [elements.CLOUD, "New Images/cloud-fairy.jpg"],
+    [elements.FOREST, "New Images/forest-fairy.jpg"]
+])
+
+const fairyDescriptions = new Map([
+
+    [elements.WATER, `These fairies are found near refreshing lakes, ponds, streams, or even puddles. 
+                They are extremely friendly and can come off as timid at first but once you get to know a water fairy, 
+                they will become one of your most loyal companions.  They are also collectors, and can’t help but keep 
+                any rocks, shells, leaves, or pebbles they find interesting.` ],
+    [elements.STAR, `Unlike most fairies, Star fairies appear at dawn or nighttime. This is because they are drawn to peaceful 
+                atmospheres, and prefer to play when there aren’t as many folks around. Star fairies are highly intelligent and thrive on routine. 
+                They are goal oriented and when they “shoot for the stars” they usually end up hitting a few. 
+                The star fairies have a witty sense of humor and are great company to have around you`],
+    [elements.CLOUD, `The cloud fairies are the most social and energetic of all the fairies. 
+                They are extremely creative and imaginative beings who either have their head up 
+                in the clouds or are daydreaming about their next adventure. Nonetheless, they have big hearts, and care very much 
+                for the people in their lives.  Cloud fairies are also the masters of crafting, and have lots of knowledge on homemade gift giving.`],
+    [elements.FOREST, `The forest fairies are nomads and wander the many places the world has to offer. 
+                Because of how much they travel they can easily fall asleep, and are often found taking long naps in the sun, on tree branches, 
+                or underneath the forest mushrooms. They have a very independent nature about them but are still 
+                surrounded by close friends who deeply care for them.`]
+])
+
+const fairyDescriptionColors = new Map([
+    [elements.WATER, "#1E537D"],
+    [elements.STAR, "#7F5B98"],
+    [elements.CLOUD, "#847266"],
+    [elements.FOREST, "#546845"] 
+])
+
 const elementCounters = new Map()
 
 Object.values(elements).forEach(element => {
@@ -389,7 +423,47 @@ function backToHome() {
 }
 
 function toOtherFairies() {
+    document.body.innerHTML = ""
 
+    const allFairiesContainer = document.createElement("div")
+    allFairiesContainer.classList.add("all-fairies-container")
+
+    Object.entries(elements).forEach(([elementKey, elementValue]) => {
+        const fairyImageNameContainer = document.createElement("div")
+        fairyImageNameContainer.classList.add("fairy-image-name-container")
+
+        const fairyImageNameDescriptionContainer = document.createElement("div")
+        fairyImageNameDescriptionContainer.classList.add("fairy-image-name-description-container")
+
+        const fairySprite = document.createElement("img")
+        fairySprite.classList.add("fairy-sprite")
+        fairySprite.src = fairyPolaroids.get(elementValue)
+
+        const fairyName = document.createElement('p')
+        fairyName.classList.add("fairy-name")
+        fairyName.textContent = `${elementValue} Fairy`
+        fairyName.style.color = `${fairyDescriptionColors.get(elementValue)}`
+
+        const fairyDescription = document.createElement('p')
+        fairyDescription.classList.add("fairy-description")
+        fairyDescription.textContent = `${fairyDescriptions.get(elementValue)}`
+        fairyDescription.style.color = `${fairyDescriptionColors.get(elementValue)}`
+
+        fairyImageNameContainer.appendChild(fairySprite)
+        fairyImageNameContainer.appendChild(fairyName)
+
+        fairyImageNameDescriptionContainer.appendChild(fairyImageNameContainer)
+        fairyImageNameDescriptionContainer.appendChild(fairyDescription)
+    
+        allFairiesContainer.appendChild(fairyImageNameDescriptionContainer)
+
+    })
+
+    document.body.appendChild(allFairiesContainer)
+
+    const footer = document.createElement("footer")
+    footer.textContent = "Created by Mila Maes & Shawn Pribadi"
+    document.body.appendChild(footer)
 }
 
 /* --- Description Colors ---- */

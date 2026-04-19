@@ -173,6 +173,49 @@ footer {
     margin-bottom: 0.25vh;
 }
 
+.all-fairies-container {
+    display: flex;
+    flex-direction: column;
+    padding: 5vh 2vw 2vh 2vw;
+    margin-bottom: 3vh;
+    gap: clamp(15px, 3vh, 25px);
+}
+
+.fairy-image-name-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 250px;
+    /* gap: clamp(3px, 1vh, 12px); */
+    align-content: center;
+}
+
+.fairy-sprite {
+    width: clamp(100px, 40vw, 500px);
+    border: 2px solid black;
+}
+
+.fairy-name {
+    font-family: "NSimSun", "SimSun", "Songti SC", serif; 
+    color: black;
+    font-size: clamp(14px, 3vw, 20px);
+}
+
+.fairy-image-name-description-container {
+    display: flex;
+    flex-direction: wrap;
+    justify-content: center;
+    gap: clamp(20px, 3vw, 30px);
+    margin-bottom: 0.25vh;
+}
+
+.fairy-description {
+    flex: 2 1 300px;
+    font-family: "NSimSun", "SimSun", "Songti SC", serif; 
+    font-size: clamp(18px, 3vw, 28px);
+    color: black;
+    width: clamp(100px, 60vw, 500px);
+}
+
 .container,
 .result-container {
     padding-bottom: 8vh;
