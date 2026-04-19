@@ -178,7 +178,7 @@ footer {
     flex-direction: column;
     padding: 5vh 2vw 2vh 2vw;
     /* margin-bottom: 3vh; */
-    margin: 0 3dvw 0;
+    padding: 5vh clamp(12px, 4vw, 40px) 2vh;
     gap: clamp(15px, 3vh, 25px);
 }
 
