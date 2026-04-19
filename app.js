@@ -146,6 +146,10 @@ function startQuiz() {
     const questionNumber = document.getElementById("question-number")
     const question = document.getElementById("question")
 
+    const footer = document.createElement("footer")
+    footer.textContent = "Created by Mila Maes & Shawn Pribadi"
+    document.body.appendChild(footer)
+
     nextQuestion(buttons, questionNumber, question)
 }
 
@@ -341,11 +345,16 @@ function showResult(element) {
     const resultContainer = document.createElement("div")
     resultContainer.classList.add("result-container")
 
+    const footer = document.createElement("footer")
+    footer.textContent = "Created by Mila Maes & Shawn Pribadi"
+    document.body.appendChild(footer)
+
     resultContainer.appendChild(fairyImage)
     resultContainer.appendChild(descriptionContainer)
     resultContainer.appendChild(buttonContainer)
 
     document.body.appendChild(resultContainer)
+    document.body.appendChild(footer)
 
     document.body.style.display = "flex";
     document.body.style.flexDirection = "column";    

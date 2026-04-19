@@ -18,11 +18,11 @@
     --question-width: var(--button-width);
 
     --button-width: clamp(200px, 80%, 600px);
-    --button-font-size: clamp(12px, 3vw, 28px);
+    --button-font-size: clamp(16px, 3.5vw, 32px);
     --button-border-color: #F1597F;
 
-    --question-font-size: clamp(14px, 3.5vw, 32px);
-    --question-number-font-size: clamp(16px, 4vw, 36px);
+    --question-font-size: clamp(18px, 4vw, 36px);
+    --question-number-font-size: clamp(20px, 4.5vw, 40px);
     --fairy-image-width: clamp(200px, 60%, 600px);
 }
 
@@ -46,6 +46,18 @@ h1 {
     font-size: var(--question-number-font-size);
     margin: 0; 
     margin-bottom: 0.5vh; 
+}
+
+footer {
+    position: absolute;
+    bottom: 2dvh;
+    left: 0;
+    width: 100%;
+
+    text-align: center;
+    padding: 1vh 0;
+    font-size: clamp(20px, 3vw, 30px);
+    font-family: "Freestyle Script", serif;
 }
 
 #start-screen {
@@ -145,6 +157,11 @@ h1 {
     margin-bottom: 0.25vh;
 }
 
+.container,
+.result-container {
+    padding-bottom: 8vh;
+}
+
 #button-container {
     display: flex;
     flex-direction: row;
@@ -170,7 +187,7 @@ h1 {
 #fairy-description {
     width: var(--button-width);
     font-family: "NSimSun", "SimSun", "Songti SC", serif; 
-    font-size: clamp(14px, 3vw, 24px);
+    font-size: clamp(16px, 3vw, 28px);
 }
 
 #final-fairy-image {
