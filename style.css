@@ -189,7 +189,7 @@ footer {
     border: var(--button-border-size) solid var(--button-border-color);
     background-color: transparent;
     border-radius: var(--button-border-radius);
-    color: var(--footer-font-color)
+    color: var(--footer-font-color);
 
     width: 45%;              
     max-width: 200px;        
