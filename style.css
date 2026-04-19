@@ -189,7 +189,7 @@ footer {
 }
 
 .fairy-sprite {
-    width: clamp(100px, 40vw, 500px);
+    width: clamp(150px, 50vw, 500px);
     border: 2px solid black;
 }
 
@@ -215,7 +215,7 @@ footer {
     font-family: "NSimSun", "SimSun", "Songti SC", serif; 
     font-size: clamp(18px, 3vw, 28px);
     color: black;
-    width: clamp(100px, 60vw, 500px);
+    width: clamp(100px, 50vw, 500px);
 }
 
 .container,
