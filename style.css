@@ -18,8 +18,10 @@
     --question-width: var(--button-width);
 
     --button-width: clamp(200px, 80%, 600px);
-    --button-font-size: clamp(18px, 5vw, 48px);
-    --question-font-size: clamp(20px, 6vw, 60px);
+    --button-font-size: clamp(12px, 3vw, 28px);
+    --button-border-color: #F1597F;
+
+    --question-font-size: clamp(14px, 3.5vw, 32px);
     --question-number-font-size: clamp(16px, 4vw, 36px);
     --fairy-image-width: clamp(200px, 60%, 600px);
 }
@@ -32,7 +34,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 
-    overflow: hidden;
+    /* overflow: hidden; */
 
     position: relative;
 
@@ -79,7 +81,7 @@ h1 {
 }
 
 #result {
-    font-size: 50px;
+    font-size: var(--button-font-size);
 }
 
 #final-fairy {
@@ -112,17 +114,17 @@ h1 {
     min-height: auto; 
     padding: 1em 1.5em; 
 
-    font-size: clamp(16px, 3vw, 32px); 
+    font-size: var(--button-font-size); 
     line-height: 1.4;           
     white-space: normal;        
     word-break: break-word;     
     
     text-align: center;
-    border: var(--button-border-size) solid red;
+    border: var(--button-border-size) solid var(--button-border-color);
     border-radius: var(--button-border-radius);
     background-color: transparent;
     
-font-family: "NSimSun", "SimSun", "Songti SC", serif;
+    font-family: "NSimSun", "SimSun", "Songti SC", serif;
 }
 
 .bottom-result-page-container {
@@ -140,22 +142,35 @@ font-family: "NSimSun", "SimSun", "Songti SC", serif;
     height: 100%;                  
     padding: 5vh 2vw 2vh 2vw;      
     text-align: center;     
+    margin-bottom: 0.25vh;
 }
 
 #button-container {
     display: flex;
     flex-direction: row;
-    gap: 50px;
+    gap: clamp(10px, 4vw, 40px);
+    margin-top: 0.25vh;
 }
 
 #button-container button {
+    border: var(--button-border-size) solid var(--button-border-color);
+    background-color: transparent;
+    border-radius: var(--button-border-radius);
+
+    width: 45%;              /* was 100% in answer buttons */
+    max-width: 200px;        /* keeps them from getting too big */
+    padding: 0.5em 1em;      /* reduced padding */
+
+    font-size: calc(var(--button-font-size) * 0.7); /* ~30% smaller */
+    line-height: 1.3;
+
     font-family: "NSimSun", "SimSun", "Songti SC", serif; 
 }
 
 #fairy-description {
     width: var(--button-width);
     font-family: "NSimSun", "SimSun", "Songti SC", serif; 
-    font-size: 30px;
+    font-size: clamp(14px, 3vw, 24px);
 }
 
 #final-fairy-image {
