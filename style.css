@@ -204,8 +204,9 @@ footer {
 .fairy-image-name-description-container {
     display: flex;
     flex-direction: wrap;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: clamp(20px, 3vw, 30px);
+    gap: clamp(16px, 2vw, 20px);
     margin-bottom: 0.25vh;
 }
 
