@@ -7,23 +7,21 @@
 }
 
 :root {
-    /* --title-screen: url("Images/title-screen.gif"); */
     --title-page-background: url("New Images/fairy-background.gif");
-    /* --fairy: url("New Images/fairy.gif"); */
     --yes-button: url("New Images/yes-button.png");
 
     /* ---- Button variables ---- */
     --button-border-radius: 200px;
     --button-border-size: 2px;
-    --button-width: 1250px;
 
     /* ---- Question Variables ---- */
     --question-width: var(--button-width);
 
-    /* ---- Font sizes ---- */
-    --button-font-size: 70px;
-    --question-font-size: calc(var(--button-font-size) + 100%);
-    --question-number-font-size: calc(var(--button-font-size) - 5%);
+    --button-width: clamp(200px, 80%, 600px);
+    --button-font-size: clamp(18px, 5vw, 48px);
+    --question-font-size: clamp(20px, 6vw, 60px);
+    --question-number-font-size: clamp(16px, 4vw, 36px);
+    --fairy-image-width: clamp(200px, 60%, 600px);
 }
 
 body {
@@ -34,18 +32,18 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 
+    overflow: hidden;
+
     position: relative;
 
-    /* display: flex;
-    align-items: center; /* vertical alignment */
-    /* justify-content: center; horizontal alignment */
     text-align: center;
-
     font-family: "Freestyle Script", sans-serif;
 }
 
 h1 {
     font-size: var(--question-number-font-size);
+    margin: 0; 
+    margin-bottom: 0.5vh; 
 }
 
 #start-screen {
@@ -58,8 +56,6 @@ h1 {
 }
 
 #yes-button {
-    /* align-items: center;
-    justify-content: center; */
     position: absolute;
     top: 60vh;
     left: 50%;
@@ -69,15 +65,17 @@ h1 {
     height: auto;
 }
 
-/* #question-number {
+#question-number {
     margin: 0 auto 0;
-} */
+}
 
 #question {
-    width: var(--question-width);
-    /* margin: 0 auto 20px auto; */
-    margin: 0 auto 0;
+    width: 90%;
+    max-width: 600px;
     font-size: var(--question-font-size);
+    line-height: 1.3;
+    margin: 0 0 1vh 0; 
+    font-family: "NSimSun", "SimSun", "Songti SC", serif; 
 }
 
 #result {
@@ -101,27 +99,47 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
-    margin-top: 30px;
+    gap: 1vh;          
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1vh 0;    
 }
 
 .buttons button {
-    width: var(--button-width);
-    height: auto;
-    padding: 10px 35px 10px 35px;
+    width: 100%;                
+    max-width: 100%;            
+    min-height: auto; 
+    padding: 1em 1.5em; 
+
+    font-size: clamp(16px, 3vw, 32px); 
+    line-height: 1.4;           
+    white-space: normal;        
+    word-break: break-word;     
+    
     text-align: center;
     border: var(--button-border-size) solid red;
     border-radius: var(--button-border-radius);
     background-color: transparent;
-
-    font-size: var(--button-font-size);
-    font-family: "Freestyle Script", sans-serif;
+    
+font-family: "NSimSun", "SimSun", "Songti SC", serif;
 }
 
 .bottom-result-page-container {
     display: flex;
     flex-direction: row;
     gap: 20px;
+}
+
+.result-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;  
+    align-items: center;
+    gap: 2vh;                     
+    height: 100%;                  
+    padding: 5vh 2vw 2vh 2vw;      
+    text-align: center;     
 }
 
 #button-container {
@@ -131,7 +149,7 @@ h1 {
 }
 
 #button-container button {
-    font-family: "Freestyle Script", sans-serif;
+    font-family: "NSimSun", "SimSun", "Songti SC", serif; 
 }
 
 #fairy-description {
@@ -141,7 +159,12 @@ h1 {
 }
 
 #final-fairy-image {
-    width: 600px;
+    width: var(--fairy-image-width); 
+    max-width: 90vw;
     height: auto;
     border: 2px solid black;
+}
+
+* {
+    box-sizing: border-box;
 }

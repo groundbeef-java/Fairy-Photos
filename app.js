@@ -7,12 +7,7 @@
 
 /* --- Variables --- */
 let questionIndex = -1
-let waterCounter = 0,
-    starCounter = 0,
-    cloudCounter = 0,
-    forestCounter = 0
 
-// const elements = ["Water", "Star", "Cloud", "Forest"]
 const elements = Object.freeze({
     WATER: "Water",
     STAR: "Star",
@@ -26,23 +21,14 @@ Object.values(elements).forEach(element => {
     elementCounters.set(element, 0)
 })
 
-// const elementCounters = new Map([
-//     ["Water", 0],
-//     ["Star", 0],
-//     ["Cloud", 0],
-//     ["Forest", 0]
-// ])
-
 const NUMBER_OF_QUESTIONS = 14
 
-const buttons = document.getElementById("buttons")
-const questionNumber = document.getElementById("question-number")
-const question = document.getElementById("question")
 const container = document.getElementsByClassName("container")
 /* ----------------- */
 
 /* --- Images --- */
-const backgroundImage = "New Images/question-page-background.jpg"
+const titlePageBackground = "New Images/fairy-background.gif"
+const questionBackgroundImage = "New Images/question-page-background.jpg"
 /* -------------- */
 
 const qAndA = {
@@ -145,7 +131,7 @@ const qAndA = {
         "Something I know a lot about and have a passion for"] 
     }
 
-const yesButton = document.getElementById("yes-button")
+const yesButton = document.getElementById("yes-button") 
 
 yesButton.addEventListener("click", () => {
     document.getElementById("start-screen").style.display = "none"
@@ -153,26 +139,27 @@ yesButton.addEventListener("click", () => {
 })
 
 function startQuiz() {
-    document.body.style.backgroundImage = `url("${backgroundImage}")`
+    document.body.style.backgroundImage = `url("${questionBackgroundImage}")`
     document.body.style.backgroundSize = "cover"
-    nextQuestion()
+
+    const buttons = document.getElementById("buttons")
+    const questionNumber = document.getElementById("question-number")
+    const question = document.getElementById("question")
+
+    nextQuestion(buttons, questionNumber, question)
 }
 
-function nextQuestion() {
+function nextQuestion(buttons, questionNumber, question) {
     questionIndex++
 
     buttons.innerHTML = ""
 
     if (questionIndex == NUMBER_OF_QUESTIONS) {
-        // question.innerHTML = displayCounters()
         const tallyMap = countTally()
-        endQuiz(tallyMap)
+        endQuiz(tallyMap, buttons, questionNumber, question)
         return
     }
 
-    /* Ensure index isn't greater than number of questions */
-    /* ------------------- TEMPORARY ----------------------*/
-    /* ----- Change the behavior to restart the quiz ----- */
     if (questionIndex > NUMBER_OF_QUESTIONS) {
         questionIndex = 0
     }
@@ -190,7 +177,7 @@ function nextQuestion() {
 
         button.addEventListener("click", () => {
             addElement(elementsArray[index])
-            nextQuestion()
+            nextQuestion(buttons, questionNumber, question)
         })
 
         buttons.appendChild(button)
@@ -230,17 +217,17 @@ function displayCounters() {
     return counterString
 }
 
-function endQuiz(tallyMap) {
+function endQuiz(tallyMap, buttons, questionNumber, question) {
     questionIndex = -1
     if (tallyMap.size > 1) {
-        tiebreaker(tallyMap)
+        tiebreaker(tallyMap, buttons, questionNumber, question)
     } else if (tallyMap.size === 1) {
         const element = Array.from(tallyMap.keys())[0]
         showResult(element)
     }
 }
 
-function tiebreaker(tallyMap) {
+function tiebreaker(tallyMap, buttons, questionNumber, question) {
     /* Tie breaker question: Which planet would you want to travel to if you could?  
     Neptune 
     Saturn  
@@ -330,7 +317,6 @@ function showResult(element) {
             document.body.innerHTML = "<p> An error occured </p>"
     }
 
-    // document.body.innerHTML += '<button id="back-to-home" onclick="backToHome()"> Back to Home </button>'
     const buttonContainer = document.createElement("p")
     buttonContainer.id = "button-container"
 
@@ -352,19 +338,44 @@ function showResult(element) {
     })
     buttonContainer.appendChild(exploreOtherFairiesButton)
 
-    document.body.appendChild(fairyImage)
-    document.body.appendChild(descriptionContainer)
-    document.body.appendChild(buttonContainer)
+    const resultContainer = document.createElement("div")
+    resultContainer.classList.add("result-container")
+
+    resultContainer.appendChild(fairyImage)
+    resultContainer.appendChild(descriptionContainer)
+    resultContainer.appendChild(buttonContainer)
+
+    document.body.appendChild(resultContainer)
 
     document.body.style.display = "flex";
     document.body.style.flexDirection = "column";    
     document.body.style.alignItems = "center";
-    document.body.style.justifyContent = "center";
-    document.body.style.margin = "30px";
 }
 
 function backToHome() {
-    
+    document.body.innerHTML = 
+        `<main class="container">
+            <h1 id="question-number"></h1>
+            <h2 id="question"></h2>
+
+            <p id="start-screen">
+                <img src="New Images/yes-button.png" id="yes-button">
+            </p>
+
+            <div class="buttons" id="buttons"></div>
+        </main>`    
+    questionIndex = -1
+    elementCounters.forEach((count, element) => {
+        elementCounters.set(element, 0)
+    })
+    document.body.style.backgroundImage = `url("${titlePageBackground}")`
+
+    const yesButton = document.getElementById("yes-button") 
+
+    yesButton.addEventListener("click", () => {
+        document.getElementById("start-screen").style.display = "none"
+        startQuiz()
+    })
 }
 
 function toOtherFairies() {
